@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> HealthPehle | BMI Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-900 text-white min-h-screen">
+    <nav class="bg-gray-800 py-4 px-6 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-primary flex items-center gap-2">
+          <i class="ri-heart-pulse-fill"></i>
+          HealthPehle
+        </a>
+        <div class="flex gap-4">
+          <a href="bmi.html" class="px-4 py-2 rounded-lg bg-primary text-white">BMI Calculator</a>
+          <a href="dashboard.html" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">Dashboard</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-4">Body Mass Index Calculator</h1>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Calculate your BMI and discover your ideal weight range based on your height and weight.
+          BMI is a useful measurement for most people over 18 years old.
+        </p>
+      </div>
+
+      <div class="bg-gray-800 rounded-lg p-6 mb-8">
+        <div class="flex gap-4 mb-6">
+          <button
+            class="flex-1 py-3 px-4 bg-primary text-white rounded-lg cursor-pointer transition-colors"
+            id="usUnits"
+          >
+            US Units
+          </button>
+          <button
+            class="flex-1 py-3 px-4 bg-gray-700 text-white rounded-lg cursor-pointer transition-colors"
+            id="metricUnits"
+          >
+            Metric Units
+          </button>
+          <button
+            class="flex-1 py-3 px-4 bg-gray-700 text-white rounded-lg cursor-pointer transition-colors"
+            id="otherUnits"
+          >
+            Other Units
+          </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            class="space-y-6 bg-gray-700/50 p-6 rounded-xl backdrop-blur-sm text-lg"
+          >
+            <div class="flex flex-col">
+              <label class="mb-2 flex items-center gap-2">
+                <i class="ri-calendar-line text-primary"></i>
+                <span>Age</span>
+              </label>
+              <div class="relative">
+                <input
+                  type="number"
+                  class="bg-gray-700 border-2 border-gray-600 focus:border-primary transition-colors rounded-lg p-3 text-white w-full"
+                  id="age"
+                  min="2"
+                  max="120"
+                  value="25"
+                />
+                <div
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                >
+                  <i class="ri-user-smile-line"></i>
+                </div>
+              </div>
+              <span class="text-sm text-gray-400 mt-2 flex items-center gap-1">
+                <i class="ri-information-line"></i>
+                Recommended age range: 2 - 120 years
+              </span>
+            </div>
+            <div class="flex flex-col">
+              <label class="mb-2 flex items-center gap-2">
+                <i class="ri-user-line text-primary"></i>
+                <span>Gender</span>
+              </label>
+              <div class="flex gap-6">
+                <label class="flex items-center cursor-pointer group">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    checked
+                    class="hidden"
+                  />
+                  <span
+                    class="w-5 h-5 border-2 border-primary rounded-full inline-block mr-3 flex-shrink-0 group-hover:border-secondary transition-colors"
+                  ></span>
+                  <div class="flex items-center gap-2">
+                    <i class="ri-men-line text-primary"></i>
+                    Male
+                  </div>
+                </label>
+                <label class="flex items-center cursor-pointer group">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    class="hidden"
+                  />
+                  <span
+                    class="w-5 h-5 border-2 border-primary rounded-full inline-block mr-3 flex-shrink-0 group-hover:border-secondary transition-colors"
+                  ></span>
+                  <div class="flex items-center gap-2">
+                    <i class="ri-women-line text-primary"></i>
+                    Female
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="flex flex-col" id="heightContainer">
+              <label class="mb-2 flex items-center gap-2">
+                <i class="ri-ruler-line text-primary"></i>
+                <span>Height</span>
+              </label>
+              <div class="flex gap-3" id="imperialHeight">
+                <div class="relative flex-1">
+                  <input
+                    type="number"
+                    class="bg-gray-700 border-2 border-gray-600 focus:border-primary transition-colors rounded-lg p-3 text-white w-full"
+                    id="feet"
+                    value="5"
+                  />
+                  <span
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                    >ft</span
+                  >
+                </div>
+                <div class="relative flex-1">
+                  <input
+                    type="number"
+                    class="bg-gray-700 border-2 border-gray-600 focus:border-primary transition-colors rounded-lg p-3 text-white w-full"
+                    id="inches"
+                    value="10"
+                  />
+                  <span
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                    >in</span
+                  >
+                </div>
+              </div>
+              <div class="flex gap-2 hidden" id="metricHeight">
+                <div class="relative flex-1">
+                  <input
+                    type="number"
+                    class="bg-gray-700 border-2 border-gray-600 focus:border-primary transition-colors rounded-lg p-3 text-white w-full"
+                    id="cm"
+                    value="178"
+                  />
+                  <span
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                    >cm</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label class="mb-2 flex items-center gap-2">
+                <i class="ri-scales-3-line text-primary"></i>
+                <span>Weight</span>
+              </label>
+              <div class="relative" id="weightContainer">
+                <input
+                  type="number"
+                  class="bg-gray-700 border-2 border-gray-600 focus:border-primary transition-colors rounded-lg p-3 text-white w-full"
+                  id="weight"
+                  value="160"
+                />
+                <span
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  id="weightUnit"
+                  >lbs</span
+                >
+              </div>
+            </div>
+            <div class="flex flex-col gap-4 pt-4">
+              <button
+                class="bg-primary hover:bg-secondary text-white py-4 px-6 rounded-lg transition-all cursor-pointer flex items-center justify-center gap-3 text-lg font-medium hover:shadow-lg hover:shadow-primary/20 active:transform active:scale-95"
+                id="calculate"
+              >
+                <i class="ri-calculator-line text-xl"></i>
+                Calculate BMI
+              </button>
+              <button
+                class="bg-gray-700 hover:bg-gray-600 text-white py-4 px-6 rounded-lg transition-all cursor-pointer flex items-center justify-center gap-3 hover:shadow-lg hover:shadow-gray-700/20 active:transform active:scale-95"
+                id="clear"
+              >
+                <i class="ri-refresh-line"></i>
+                Reset All Fields
+              </button>
+            </div>
+            <div class="text-sm text-gray-400 pt-4 border-t border-gray-600">
+              <div class="flex items-center gap-2">
+                <i class="ri-shield-check-line text-primary"></i>
+                Your data is processed locally and never stored or shared
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-700 rounded-lg p-6 text-lg">
+            <h2 class="text-2xl font-bold mb-4">Result</h2>
+            <div class="text-center mb-6">
+              <div class="text-4xl font-bold mb-2">
+                BMI = <span id="bmiResult">23</span> kg/m²
+              </div>
+              <div class="text-xl text-primary">
+                (<span id="bmiCategory">Normal</span>)
+              </div>
+              <p id="bmiDescription" class="text-gray-400 mt-2">
+                Your BMI falls within the healthy weight range.
+              </p>
+            </div>
+            <div class="relative h-40 mb-6">
+              <svg class="w-full h-full" viewBox="0 0 200 100">
+                <path
+                  d="M20,80 A60,60 0 0,1 180,80"
+                  fill="none"
+                  stroke="#374151"
+                  stroke-width="20"
+                />
+                <path
+                  d="M20,80 A60,60 0 0,1 180,80"
+                  fill="none"
+                  stroke="#15B8A6"
+                  stroke-width="20"
+                  stroke-dasharray="120"
+                  stroke-dashoffset="60"
+                  class="gauge"
+                />
+                <circle cx="100" cy="80" r="5" fill="white" id="pointer" />
+              </svg>
+            </div>
+            <div class="space-y-4 mt-6 border-t border-gray-600 pt-6">
+              <div
+                class="flex items-center justify-between bg-gray-800 rounded-lg p-4"
+              >
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-lg"
+                  >
+                    <i class="ri-scales-3-line text-primary"></i>
+                  </div>
+                  <span class="text-gray-300">Healthy BMI range</span>
+                </div>
+                <span class="font-semibold">18.5 - 25 kg/m²</span>
+              </div>
+              <div
+                class="flex items-center justify-between bg-gray-800 rounded-lg p-4"
+              >
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-lg"
+                  >
+                    <i class="ri-body-scan-line text-primary"></i>
+                  </div>
+                  <span class="text-gray-300">Healthy weight range</span>
+                </div>
+                <span class="font-semibold">128.9 - 174.2 lbs</span>
+              </div>
+              <div
+                class="flex items-center justify-between bg-gray-800 rounded-lg p-4"
+              >
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-lg"
+                  >
+                    <i class="ri-pulse-line text-primary"></i>
+                  </div>
+                  <span class="text-gray-300">BMI Prime</span>
+                </div>
+                <span class="font-semibold">0.92</span>
+              </div>
+              <div
+                class="flex items-center justify-between bg-gray-800 rounded-lg p-4"
+              >
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-lg"
+                  >
+                    <i class="ri-heart-pulse-line text-primary"></i>
+                  </div>
+                  <span class="text-gray-300">Ponderal Index</span>
+                </div>
+                <span class="font-semibold">12.9 kg/m³</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-gray-800 py-8">
+      <div class="container mx-auto px-4 text-center text-gray-400">
+        <p>© 2025 HealthPehle. All rights reserved.</p>
+        <p class="mt-2 text-sm">This tool is for informational purposes only.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#15B8A6",
+              secondary: "#0F766E",
+            },
+            borderRadius: {
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

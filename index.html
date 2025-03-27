@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthPehle | Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-900 text-white min-h-screen">
+    <nav class="bg-gray-800 py-4 px-6 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-primary flex items-center gap-2">
+          <i class="ri-heart-pulse-fill"></i>
+          HealthPehle
+        </a>
+        <div class="flex gap-4">
+          <a href="bmi.html" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">BMI Calculator</a>
+          <a href="dashboard.html" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">Dashboard</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12 max-w-6xl">
+      <section class="text-center mb-16">
+        <h1 class="text-5xl font-bold mb-6">Your Wellness Journey Starts Here!</h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Monitor your health, gain insights into your body, and take charge of your well-being with personalized guidance.
+        </p>
+      </section>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div class="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-primary/10 transition-shadow">
+          <div class="text-primary text-4xl mb-4">
+            <i class="ri-scales-3-line"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">BMI Calculator</h3>
+          <p class="text-gray-400 mb-4">
+            Evaluate Your Body Mass Index and Learn How It Impacts Your Wellness.
+          </p>
+          <a href="bmi.html" class="btn btn-primary inline-flex items-center">
+            Calculate Now <i class="ri-arrow-right-line ml-2"></i>
+          </a>
+        </div>
+
+        <div class="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-primary/10 transition-shadow">
+          <div class="text-blue-400 text-4xl mb-4">
+            <i class="ri-heart-pulse-line"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Health Dashboard</h3>
+          <p class="text-gray-400 mb-4">
+            Monitor Your Health Journey and Celebrate Your Progress.
+          </p>
+          <a href="dashboard.html" class="btn btn-primary inline-flex items-center">
+            View Dashboard <i class="ri-arrow-right-line ml-2"></i>
+          </a>
+        </div>
+
+        <div class="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-primary/10 transition-shadow">
+          <div class="text-green-400 text-4xl mb-4">
+            <i class="ri-book-read-line"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Health Resources</h3>
+          <p class="text-gray-400 mb-4">
+            Learn about healthy living and get personalized recommendations.
+          </p>
+          <a href="#" class="btn btn-outline inline-flex items-center">
+            Coming Soon <i class="ri-time-line ml-2"></i>
+          </a>
+        </div>
+      </div>
+
+      <section class="bg-gray-800 rounded-xl p-8 mb-16">
+        <h2 class="text-3xl font-bold mb-6 text-center">Why Monitor Your Health?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-3 flex items-center gap-2">
+              <i class="ri-lightbulb-flash-line text-yellow-400"></i>
+              Awareness
+            </h3>
+            <p class="text-gray-400">
+              Understanding your health metrics helps you make informed decisions about your lifestyle and identify potential areas for improvement.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-3 flex items-center gap-2">
+              <i class="ri-line-chart-line text-green-400"></i>
+              Progress Tracking
+            </h3>
+            <p class="text-gray-400">
+              Monitoring changes over time helps you see the impact of your health choices and stay motivated on your wellness journey.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 py-8">
+      <div class="container mx-auto px-4 text-center text-gray-400">
+        <p>© 2025 HealthPehle. All rights reserved.</p>
+        <p class="mt-2 text-sm">This tool is for informational purposes only.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#15B8A6",
+              secondary: "#0F766E",
+            },
+            borderRadius: {
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+  </body>
+</html>

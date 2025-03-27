@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthPehle | Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-900 text-white min-h-screen">
+    <nav class="bg-gray-800 py-4 px-6 shadow-lg">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-primary flex items-center gap-2">
+          <i class="ri-heart-pulse-fill"></i>
+          HealthPehle
+        </a>
+        <div class="flex gap-4">
+          <a href="index.html" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">BMI Calculator</a>
+          <a href="dashboard.html" class="px-4 py-2 rounded-lg bg-primary text-white">Dashboard</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold mb-8">Well-being Snapshot!</h1>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <!-- Health Stats Cards -->
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">BMI</h3>
+            <i class="ri-scales-3-line text-primary text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold" id="dashboardBmi">23.5</div>
+          <div class="text-primary" id="dashboardBmiCategory">Normal</div>
+          <div class="mt-4 text-sm text-gray-400">Healthy range: 18.5 - 25</div>
+        </div>
+
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">Heart Rate</h3>
+            <i class="ri-heart-pulse-line text-red-500 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold" id="heartRate">72</div>
+          <div class="text-green-500">Normal</div>
+          <div class="mt-4 text-sm text-gray-400">Resting: 60-100 bpm</div>
+        </div>
+
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">Blood Pressure</h3>
+            <i class="ri-drop-line text-blue-500 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold" id="bloodPressure">120/80</div>
+          <div class="text-green-500">Normal</div>
+          <div class="mt-4 text-sm text-gray-400">Optimal: <120/80</div>
+        </div>
+
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold">Sleep</h3>
+            <i class="ri-moon-line text-purple-500 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold" id="sleepHours">7.5</div>
+          <div class="text-green-500">Good</div>
+          <div class="mt-4 text-sm text-gray-400">Recommended: 7-9 hrs</div>
+        </div>
+      </div>
+
+      <!-- Health Charts Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-semibold mb-4">BMI Trend</h3>
+          <div class="h-64" id="bmiChart">
+            <!-- Chart will be rendered here -->
+            <canvas id="bmiTrendCanvas"></canvas>
+          </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-semibold mb-4">Activity Level</h3>
+          <div class="h-64" id="activityChart">
+            <!-- Chart will be rendered here -->
+            <canvas id="activityCanvas"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Health Recommendations -->
+      <div class="bg-gray-800 rounded-lg p-6 shadow-lg mb-8">
+        <h3 class="text-lg font-semibold mb-4">Personalized Recommendations</h3>
+        <div class="space-y-4" id="recommendations">
+          <div class="flex items-start gap-3">
+            <i class="ri-checkbox-circle-line text-green-500 mt-1"></i>
+            <div>
+              <h4 class="font-medium">Maintain current weight</h4>
+              <p class="text-gray-400 text-sm">Your BMI is in the healthy range. Keep up the good work!</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="ri-run-line text-primary mt-1"></i>
+            <div>
+              <h4 class="font-medium">Exercise regularly</h4>
+              <p class="text-gray-400 text-sm">Aim for at least 150 minutes of moderate activity per week.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="ri-restaurant-line text-yellow-500 mt-1"></i>
+            <div>
+              <h4 class="font-medium">Balanced diet</h4>
+              <p class="text-gray-400 text-sm">Focus on whole foods, fruits, vegetables, and lean proteins.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+        <h3 class="text-lg font-semibold mb-4">Recent Health Checks</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="text-left border-b border-gray-700">
+                <th class="pb-3">Date</th>
+                <th class="pb-3">BMI</th>
+                <th class="pb-3">Weight</th>
+                <th class="pb-3">Status</th>
+              </tr>
+            </thead>
+            <tbody id="healthHistory">
+              <tr class="border-b border-gray-700">
+                <td class="py-3">Today</td>
+                <td>23.5</td>
+                <td>160 lbs</td>
+                <td><span class="px-2 py-1 bg-green-900/50 text-green-400 rounded">Normal</span></td>
+              </tr>
+              <tr class="border-b border-gray-700">
+                <td class="py-3">1 week ago</td>
+                <td>23.2</td>
+                <td>158 lbs</td>
+                <td><span class="px-2 py-1 bg-green-900/50 text-green-400 rounded">Normal</span></td>
+              </tr>
+              <tr>
+                <td class="py-3">1 month ago</td>
+                <td>24.1</td>
+                <td>163 lbs</td>
+                <td><span class="px-2 py-1 bg-green-900/50 text-green-400 rounded">Normal</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-gray-800 py-8 mt-12">
+      <div class="container mx-auto px-4 text-center text-gray-400">
+        <p>© 2025 HealthPehle. All rights reserved.</p>
+        <p class="mt-2 text-sm">This tool is for informational purposes.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
